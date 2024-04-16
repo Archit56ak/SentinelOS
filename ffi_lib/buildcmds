@@ -1,0 +1,5 @@
+For Object file
+gcc -c ips_ids.c -fpic   
+
+For "so" File
+gcc *.o -shared -o lib_ips.so

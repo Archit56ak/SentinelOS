@@ -2,10 +2,10 @@
 
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:rive/rive.dart';
+import 'package:sentinel/Features/ips_ids.dart';
 import 'package:sentinel/Screens/navBar.dart';
 
 import '../Components/menu_btn.dart';
@@ -78,8 +78,8 @@ class _EntryPointState extends State<EntryPoint>
                 child: Transform.scale(
                     scale: scalAnimation.value,
                     child: ClipRRect(
-                      child: HomePage(),
                       borderRadius: BorderRadius.all(Radius.circular(24)),
+                      child: HomePage(),
                     ))),
           ),
           AnimatedPositioned(

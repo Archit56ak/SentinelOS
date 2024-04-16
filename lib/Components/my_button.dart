@@ -23,6 +23,7 @@ class _MyButtonState extends State<MyButton> {
       onTap: () {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => EntryPoint()));
+            
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.13,

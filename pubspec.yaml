@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.1
   rive: ^0.13.1
+  lite_rolling_switch: ^1.0.1
+  window_manager: ^0.3.8
+  flutter_window_close: ^1.0.0
 
 dev_dependencies:
   flutter_test:

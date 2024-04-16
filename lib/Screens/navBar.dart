@@ -46,6 +46,10 @@ class _side_menuState extends State<side_menu> {
                       setState(() {
                         selectedSideMenu = menu;
                       });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => menu.routeID));
                     },
                     selectedMenu: selectedSideMenu))
                 .toList(),
