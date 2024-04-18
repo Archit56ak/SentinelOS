@@ -2,7 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// import 'package:sentinel/Screens/HomePage.dart';
 import 'package:sentinel/Screens/components/menu.dart';
+// import 'package:sentinel/Screens/entrypoint.dart';
 import '../Components/my_profile.dart';
 import '../Components/side_menu_tile.dart';
 
@@ -16,6 +18,7 @@ class side_menu extends StatefulWidget {
 class _side_menuState extends State<side_menu> {
   bool selected = false;
   Menu selectedSideMenu = sideBarMenu.first;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +48,7 @@ class _side_menuState extends State<side_menu> {
                     press: () {
                       setState(() {
                         selectedSideMenu = menu;
+                        // print(curr);
                       });
                       Navigator.push(
                           context,

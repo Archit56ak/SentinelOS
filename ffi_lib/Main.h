@@ -1,2 +1,3 @@
 #pragma once
-int run(int a,int b);
+
+void runScript(void);

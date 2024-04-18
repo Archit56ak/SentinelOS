@@ -1,9 +1,7 @@
 #include<stdio.h>
+
 #include "Main.h"
-int run(int a,int b)
+void runScript()
 {
-    a=10;
-    b=5;
-    printf("Addition : %d",(a+b));
-    return a+b;
+    system("bash snort.sh");
 }

@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sentinel/Screens/Profile.dart';
 
 class myProfile extends StatelessWidget {
   const myProfile({
@@ -11,11 +14,15 @@ class myProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.white24,
-        child: Icon(
-          CupertinoIcons.person,
-          color: Colors.white,
+      leading: GestureDetector(
+        onTap: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Profile())),
+        child: CircleAvatar(
+          backgroundColor: Colors.white24,
+          child: Icon(
+            CupertinoIcons.person,
+            color: Colors.white,
+          ),
         ),
       ),
       title: Text(

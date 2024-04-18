@@ -9,8 +9,8 @@ import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:path/path.dart' as p;
 import 'dart:ffi' as dart_ffi;
 
-typedef RunIDSFunc = dart_ffi.Int Function();
-typedef RunIDSScript = Int Function();
+typedef RunIDSFunc = dart_ffi.Void Function();
+typedef RunIDSScript = void Function();
 
 class IPS_IDS extends StatefulWidget {
   static const id = 'IPS_IDS';
@@ -20,18 +20,13 @@ class IPS_IDS extends StatefulWidget {
   State<IPS_IDS> createState() => _IPS_IDSState();
 }
 
-class _IPS_IDSState extends State<IPS_IDS> {
-  // void Script() async
-  // {
-  //     var libraryPath =
-  //         path.join(Directory.current.path, "ffi_lib", "libGPUInfo.so");
-  //     final dynamicLib = dart_ffi.DynamicLibrary.open(libraryPath);
-  //     final RunIDSScript runGPUScript = dynamicLib
-  //         .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("run")
-  //         .asFunction();
-  //     runGPUScript();
-  // }
+var libraryPath = p.join(Directory.current.path, "ffi_lib", "lib_ips.so");
+final dynamicLib = dart_ffi.DynamicLibrary.open(libraryPath);
+final RunIDSScript runIPSScript = dynamicLib
+    .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runScript")
+    .asFunction();
 
+class _IPS_IDSState extends State<IPS_IDS> {
   List<String> IPS_features = ["Logs", "Rule", "Snorpy"];
   int curr = 0;
   @override
@@ -67,7 +62,9 @@ class _IPS_IDSState extends State<IPS_IDS> {
                     iconOn: Icons.lightbulb_outline,
                     iconOff: Icons.power_settings_new,
                     animationDuration: const Duration(milliseconds: 300),
-                    onTap: () {},
+                    onTap: () {
+                      return runIPSScript();
+                    },
                     onDoubleTap: () {},
                     onSwipe: () {},
                     onChanged: (bool state) {

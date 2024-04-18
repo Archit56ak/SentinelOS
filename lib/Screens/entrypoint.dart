@@ -5,6 +5,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:rive/rive.dart';
+import 'package:sentinel/Features/IO_devices.dart';
+import 'package:sentinel/Features/disk_encrypt.dart';
+import 'package:sentinel/Features/firewall.dart';
 import 'package:sentinel/Features/ips_ids.dart';
 import 'package:sentinel/Screens/navBar.dart';
 
@@ -18,6 +21,15 @@ class EntryPoint extends StatefulWidget {
   @override
   State<EntryPoint> createState() => _EntryPointState();
 }
+
+List<Widget> screens = [
+  HomePage(),
+  Firewall(),
+  IPS_IDS(),
+  Disk_encrypt(),
+  IPS_IDS(),
+  IO_devices()
+];
 
 class _EntryPointState extends State<EntryPoint>
     with SingleTickerProviderStateMixin {
