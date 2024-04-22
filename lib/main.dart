@@ -26,6 +26,7 @@ void main() async {
   FlutterWindowClose.setWindowShouldCloseHandler(() async {
     return true;
   });
+
   runApp(const Sentinel());
 }
 

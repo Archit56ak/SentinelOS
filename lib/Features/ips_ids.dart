@@ -20,11 +20,15 @@ class IPS_IDS extends StatefulWidget {
   State<IPS_IDS> createState() => _IPS_IDSState();
 }
 
-var libraryPath = p.join(Directory.current.path, "ffi_lib", "lib_ips.so");
-final dynamicLib = dart_ffi.DynamicLibrary.open(libraryPath);
-final RunIDSScript runIPSScript = dynamicLib
-    .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runScript")
-    .asFunction();
+void script() {
+  var libraryPath = p.join(Directory.current.path, "ffi_lib", "mydll.dll");
+  final dynamicLib = dart_ffi.DynamicLibrary.open(libraryPath);
+  final RunIDSScript runIPSScript = dynamicLib
+      .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runScript")
+      .asFunction();
+  runIPSScript();
+  print(libraryPath);
+}
 
 class _IPS_IDSState extends State<IPS_IDS> {
   List<String> IPS_features = ["Logs", "Rule", "Snorpy"];
@@ -62,13 +66,13 @@ class _IPS_IDSState extends State<IPS_IDS> {
                     iconOn: Icons.lightbulb_outline,
                     iconOff: Icons.power_settings_new,
                     animationDuration: const Duration(milliseconds: 300),
-                    onTap: () {
-                      return runIPSScript();
-                    },
+                    onTap: () {},
                     onDoubleTap: () {},
                     onSwipe: () {},
                     onChanged: (bool state) {
                       print("The button is working");
+                      // runIPSScript();
+                      script();
                     },
                   ),
                 )
