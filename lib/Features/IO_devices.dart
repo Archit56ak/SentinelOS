@@ -48,28 +48,20 @@ class _IO_devicesState extends State<IO_devices> {
                   ),
                   subtitle: Text(
                       "USB Blocking is a security measure to restricts or prevents the use of USB Devices."),
-                  trailing: LiteRollingSwitch(
-                    value: true,
-                    width: 115,
-                    textSize: 12,
-                    textOn: 'ENABLE',
-                    textOff: 'DISABLE',
-                    textOffColor: Colors.white,
-                    textOnColor: Colors.white,
-                    colorOn: Color.fromARGB(255, 0, 0, 0),
-                    colorOff: const Color.fromARGB(255, 0, 0, 0),
-                    iconOn: Icons.lightbulb_outline,
-                    iconOff: Icons.power_settings_new,
-                    animationDuration: const Duration(milliseconds: 300),
-                    onTap: () {
-                      showAboutDialog(context: context);
-                    },
-                    onDoubleTap: () {},
-                    onSwipe: () {},
-                    onChanged: (bool state) {
-                      print("The button is working");
-
-                      // runIPSScript();
+                  trailing: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow[100],
+                        fixedSize: const Size(180, 60),
+                        textStyle: const TextStyle(
+                            fontFamily: "Cascadia Code",
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                    label: const Text("Enable"),
+                    icon: Icon(Icons.admin_panel_settings_outlined),
+                    onPressed: () {
+                      showAlertDialog(context);
                     },
                   ),
                 ),
@@ -87,11 +79,11 @@ class _IO_devicesState extends State<IO_devices> {
       content: Text("Are you sure?"),
       actions: [
         TextButton(
-          onPressed: null,
+          onPressed: () {},
           child: const Text('Ok'),
         ),
         TextButton(
-          onPressed: null,
+          onPressed: () {},
           child: const Text('Cancel'),
         ),
       ],
@@ -105,3 +97,29 @@ class _IO_devicesState extends State<IO_devices> {
     );
   }
 }
+
+
+// LiteRollingSwitch(
+//                     value: false,
+//                     width: 115,
+//                     textSize: 12,
+//                     textOn: 'ENABLE',
+//                     textOff: 'DISABLE',
+//                     textOffColor: Colors.white,
+//                     textOnColor: Colors.white,
+//                     colorOn: Color.fromARGB(255, 0, 0, 0),
+//                     colorOff: const Color.fromARGB(255, 0, 0, 0),
+//                     iconOn: Icons.lightbulb_outline,
+//                     iconOff: Icons.power_settings_new,
+//                     animationDuration: const Duration(milliseconds: 300),
+//                     onTap: () {
+//                       showAboutDialog(context: context);
+//                     },
+//                     onDoubleTap: () {},
+//                     onSwipe: () {},
+//                     onChanged: (bool state) {
+//                       print("The button is working");
+
+//                       // runIPSScript();
+//                     },
+                  // ),

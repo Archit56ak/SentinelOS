@@ -20,37 +20,57 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.baseline,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 1,
             width: MediaQuery.of(context).size.width * 0.5,
-            decoration: BoxDecoration(color: Colors.black),
+            decoration:
+                BoxDecoration(color: const Color.fromARGB(0, 33, 33, 33)),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  "Welcome to SENTINEL-OS",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                ),
                 Container(
                   padding: EdgeInsets.all(15),
+                  height: MediaQuery.of(context).size.height * 0.15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    image: DecorationImage(
+                        image: AssetImage("assets/SOS.png"),
+                        fit: BoxFit.contain),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.22,
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
                   height: MediaQuery.of(context).size.height * 0.45,
                   width: MediaQuery.of(context).size.width * 0.3,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(110, 152, 140, 140),
+                      color: Color.fromARGB(0, 166, 152, 152),
                       borderRadius: BorderRadius.circular(30)),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        "Enter your credentials",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w300),
+                      ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
@@ -77,13 +97,12 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             padding: EdgeInsets.all(15),
-            height: MediaQuery.of(context).size.height * 0.445,
-            width: MediaQuery.of(context).size.width * 0.41,
+            height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.width * 0.5,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.white),
               color: Color.fromARGB(255, 255, 255, 255),
               image: DecorationImage(
-                  image: AssetImage("assets/SOS_vid.gif"), fit: BoxFit.cover),
+                  image: AssetImage("assets/bg.jpg"), fit: BoxFit.cover),
             ),
           )
         ],

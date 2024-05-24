@@ -1,13 +1,16 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names, camel_case_types
 
 import 'dart:ffi';
 import 'dart:io';
-
+import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:path/path.dart' as p;
 import 'dart:ffi' as dart_ffi;
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:sentinel/Features/IPS_features/Rules_manage.dart';
+import 'package:sentinel/Features/IPS_features/logs.dart';
 
 typedef RunIDSFunc = dart_ffi.Void Function();
 typedef RunIDSScript = void Function();
@@ -27,14 +30,35 @@ void script() {
       .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runScript")
       .asFunction();
   runIPSScript();
-  print(libraryPath);
+  // print(libraryPath);
 }
 
 class _IPS_IDSState extends State<IPS_IDS> {
+  List<List<dynamic>> data = [];
   List<String> IPS_features = ["Logs", "Rule", "Snorpy"];
   int curr = 0;
+
+//Reading from the logs file and printing the logs into the application
+  getdata() async {
+    final response = await rootBundle.loadString("Logs/snort_data.csv");
+    List<List<dynamic>> list_data =
+        CsvToListConverter().convert(response, eol: '\n');
+    setState(() {
+      data = list_data;
+    });
+    print(data[0]);
+  }
+
+  clear() {
+    setState(() {
+      // log_file = "******* Empty *******";
+      data = [];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> IPS_screens = [Logs(log: data), Rule(), Rule()];
     return Scaffold(
       appBar: AppBar(
         title: Text("IPS/IDS"),
@@ -54,7 +78,7 @@ class _IPS_IDSState extends State<IPS_IDS> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: LiteRollingSwitch(
-                    value: true,
+                    value: false,
                     width: 115,
                     textSize: 12,
                     textOn: 'ENABLE',
@@ -70,9 +94,13 @@ class _IPS_IDSState extends State<IPS_IDS> {
                     onDoubleTap: () {},
                     onSwipe: () {},
                     onChanged: (bool state) {
-                      print("The button is working");
                       // runIPSScript();
-                      script();
+                      // script();
+                      if (state) {
+                        getdata();
+                      } else {
+                        // clear();
+                      }
                     },
                   ),
                 )
@@ -84,9 +112,10 @@ class _IPS_IDSState extends State<IPS_IDS> {
             color: Colors.black,
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.756,
+            height: MediaQuery.of(context).size.height * 0.779,
+            // height: double.infinity,
             // padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(8),
             decoration: BoxDecoration(color: Colors.black),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -143,12 +172,15 @@ class _IPS_IDSState extends State<IPS_IDS> {
                             ],
                           )),
                 ),
+                //Ikde logs,rules,snorpy che screens change karave lagtil;
                 Container(
                   margin: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+                  padding: EdgeInsets.all(5),
                   width: double.infinity,
-                  height: 432,
+                  height: MediaQuery.of(context).size.height * 0.68,
                   color: Colors.amber,
-                )
+                  child: IPS_screens[curr],
+                ),
               ],
             ),
           )

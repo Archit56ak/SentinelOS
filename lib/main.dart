@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_window_close/flutter_window_close.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sentinel/Features/ips_ids.dart';
 import 'package:sentinel/Screens/HomePage.dart';
 import 'package:sentinel/Screens/LoginPage.dart';
@@ -12,7 +13,7 @@ void main() async {
   await windowManager.ensureInitialized();
 
   WindowOptions windowOptions = const WindowOptions(
-    size: Size(1150, 710),
+    size: Size(1300, 800),
     center: true,
     skipTaskbar: false,
     fullScreen: false,
@@ -36,6 +37,9 @@ class Sentinel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.inconsolataTextTheme(),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: WelcomePage.id,
       routes: {
