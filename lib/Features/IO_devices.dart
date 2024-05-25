@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 class IO_devices extends StatefulWidget {
   const IO_devices({super.key});
@@ -16,21 +15,22 @@ class _IO_devicesState extends State<IO_devices> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: Colors.amber,
         ),
         title: Text(
           "IO Devices",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.amber),
         ),
         backgroundColor: Colors.black,
       ),
+      backgroundColor: Colors.amber[300],
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 100,
           width: MediaQuery.of(context).size.width * 1,
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: Colors.grey[900],
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
@@ -43,14 +43,16 @@ class _IO_devicesState extends State<IO_devices> {
                   title: Text("USB Blocking"),
                   titleTextStyle: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 20,
                   ),
                   subtitle: Text(
-                      "USB Blocking is a security measure to restricts or prevents the use of USB Devices."),
+                    "USB Blocking is a security measure to restricts or prevents the use of USB Devices.",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   trailing: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.yellow[100],
+                        backgroundColor: Colors.white,
                         fixedSize: const Size(180, 60),
                         textStyle: const TextStyle(
                             fontFamily: "Cascadia Code",

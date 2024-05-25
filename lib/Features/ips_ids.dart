@@ -61,7 +61,14 @@ class _IPS_IDSState extends State<IPS_IDS> {
     List<Widget> IPS_screens = [Logs(log: data), Rule(), Rule()];
     return Scaffold(
       appBar: AppBar(
-        title: Text("IPS/IDS"),
+        iconTheme: const IconThemeData(
+          color: Colors.amber,
+        ),
+        title: Text(
+          "IPS/IDS",
+          style: TextStyle(color: Colors.amber),
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +81,10 @@ class _IPS_IDSState extends State<IPS_IDS> {
             decoration: BoxDecoration(color: Colors.white),
             child: Row(
               children: [
-                Text("IPS/IDS : "),
+                Text(
+                  "IPS/IDS : ",
+                  style: TextStyle(fontSize: 22),
+                ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: LiteRollingSwitch(

@@ -13,11 +13,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Home Page"),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(60, 0, 0, 0),
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: const IconThemeData(
+              color: Colors.amber,
+            ),
+            title: Text(
+              "Home Page",
+              style: TextStyle(color: Colors.amber),
+            ),
+            backgroundColor: Colors.black,
+          ),
+          backgroundColor: Colors.amber[300],
         ),
-        body: Text("Home Page"),
       ),
     );
   }

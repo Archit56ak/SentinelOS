@@ -11,8 +11,16 @@ class _Disk_encryptState extends State<Disk_encrypt> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Disk Encyption"),),
-     
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.amber,
+        ),
+        title: Text(
+          "Disk Encryption",
+          style: TextStyle(color: Colors.amber),
+        ),
+        backgroundColor: Colors.black,
+      ),
     );
   }
 }
