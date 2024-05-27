@@ -246,7 +246,7 @@ class Profile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage("assets/PP.jpeg"),
+                            backgroundImage: AssetImage("assets/vit_logo.jpg"),
                             // radius: 120,
                             minRadius: 90,
                             maxRadius: 110,
