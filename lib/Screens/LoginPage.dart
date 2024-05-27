@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       MyTextField(
                           hintText: "Username",
                           obscureText: false,
-                          icons: Icons.person_2_outlined),
+                          icons: Icons.person_2_outlined,lable: "Username",),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),

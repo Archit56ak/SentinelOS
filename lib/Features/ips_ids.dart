@@ -24,10 +24,10 @@ class IPS_IDS extends StatefulWidget {
 }
 
 void script() {
-  var libraryPath = p.join(Directory.current.path, "ffi_lib", "mydll.dll");
+  var libraryPath = p.join(Directory.current.path, "ffi_lib", "mylib.dll");
   final dynamicLib = dart_ffi.DynamicLibrary.open(libraryPath);
   final RunIDSScript runIPSScript = dynamicLib
-      .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runScript")
+      .lookup<dart_ffi.NativeFunction<RunIDSFunc>>("runSnortScript")
       .asFunction();
   runIPSScript();
   // print(libraryPath);
@@ -105,7 +105,7 @@ class _IPS_IDSState extends State<IPS_IDS> {
                     onSwipe: () {},
                     onChanged: (bool state) {
                       // runIPSScript();
-                      // script();
+                      script();
                       if (state) {
                         getdata();
                       } else {
