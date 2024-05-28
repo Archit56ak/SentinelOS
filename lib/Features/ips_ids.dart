@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names, camel_case_types
 
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'package:csv/csv.dart';
@@ -37,6 +38,24 @@ class _IPS_IDSState extends State<IPS_IDS> {
   List<List<dynamic>> data = [];
   List<String> IPS_features = ["Logs", "Rule", "Snorpy"];
   int curr = 0;
+  Timer? _timer;
+
+  void startLogReading() async {
+    _timer = Timer.periodic(Duration(seconds: 2), (Timer timer) async {
+      final response = await rootBundle.loadString("Logs/snort_data.csv");
+      List<List<dynamic>> list_data =
+          CsvToListConverter().convert(response, eol: '\n');
+      setState(() {
+        data = list_data;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
 //Reading from the logs file and printing the logs into the application
   getdata() async {

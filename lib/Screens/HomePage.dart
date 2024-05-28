@@ -27,18 +27,20 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.black,
           ),
           backgroundColor: Colors.amber[300],
-          body: Container(
-            height: MediaQuery.of(context).size.height * 1,
-            width: MediaQuery.of(context).size.width * 1,
-            decoration: BoxDecoration(
-              color: Colors.grey[900],
+          body: Stack(children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 1,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: BoxDecoration(
+                color: Colors.black,
+              ),
+              child: Image.asset(
+                "assets/SOS.png",
+                color: Colors.white.withOpacity(0.65),
+                colorBlendMode: BlendMode.modulate,
+              ),
             ),
-            child: Image.asset(
-              "assets/SOS.png",
-              color: Colors.white.withOpacity(0.65),
-              colorBlendMode: BlendMode.modulate,
-            ),
-          ),
+          ]),
         ),
       ),
     );
